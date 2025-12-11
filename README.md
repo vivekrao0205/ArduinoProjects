@@ -23,7 +23,7 @@
 ### Overview
 
 This project simulates a simple smart traffic signal that updates LED indicators based on the proximity of a detected object (vehicle). The ultrasonic sensor measures distance and the Arduino switches LEDs to represent traffic density:
-![Traffic Sensor Setup](Images/Traffic.png)
+
 * **Green** — Road clear (object far)
 * **Yellow** — Moderate traffic (object approaching)
 * **Red** — Heavy traffic / object very close
@@ -46,8 +46,6 @@ This project simulates a simple smart traffic signal that updates LED indicators
 * Breadboard
 * Jumper wires
 
-> Optional: USB cable for programming, small enclosure or mounting hardware for deployment
-
 ## Circuit Connections
 
 **Ultrasonic Sensor (HC-SR04)**
@@ -67,8 +65,7 @@ This project simulates a simple smart traffic signal that updates LED indicators
 
 * Breadboard GND rail → Arduino **GND**
 
-*(Include a circuit diagram or Tinkercad screenshot in the `docs/` folder or repository root.)*
-
+![Traffic Sensor Setup](Images/Traffic.png)
 ## How It Works
 
 1. The HC-SR04 sends a short ultrasonic pulse from `TRIG` and listens for the echo on `ECHO`.
