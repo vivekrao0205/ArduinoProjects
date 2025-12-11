@@ -1,7 +1,10 @@
 # IOT Projects
 
-## 1 - Traffic Density Controller
+## Index
 
+1. [Traffic Density Controller](#1---traffic-density-controller)
+
+## 1 - Traffic Density Controller
 **Traffic Density Controller** is a beginner-friendly Arduino project that demonstrates real-time distance sensing using an HC-SR04 ultrasonic sensor and visual traffic-status feedback using red, yellow, and green LEDs. It’s great for learning basic electronics, sensor interfacing, and Arduino programming — and it works both on a physical breadboard and in Tinkercad simulation.
 
 ---
@@ -20,16 +23,14 @@
 ### Overview
 
 This project simulates a simple smart traffic signal that updates LED indicators based on the proximity of a detected object (vehicle). The ultrasonic sensor measures distance and the Arduino switches LEDs to represent traffic density:
-
+![Traffic Sensor Setup](Images/Traffic.png)
 * **Green** — Road clear (object far)
 * **Yellow** — Moderate traffic (object approaching)
 * **Red** — Heavy traffic / object very close
 
-Ideal for STEM demos, parking-assist prototyping, and learning sensor-based control.
-
 ### Features
 
-* Distance measurement with HC-SR04
+* Distance measurement with Sensor
 * Real-time traffic status using 3 LEDs (R/Y/G)
 * Works on physical hardware and Tinkercad
 * Simple, modular wiring and code (beginner-friendly)
