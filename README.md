@@ -1,85 +1,211 @@
-# IOT Projects
+#  IOT Projects
 
-## Index
-
-1. [Traffic Density Controller](#1---traffic-density-controller)
-
-## 1 - Traffic Density Controller
-**Traffic Density Controller** is a beginner-friendly Arduino project that demonstrates real-time distance sensing using an HC-SR04 ultrasonic sensor and visual traffic-status feedback using red, yellow, and green LEDs. It’s great for learning basic electronics, sensor interfacing, and Arduino programming — and it works both on a physical breadboard and in Tinkercad simulation.
+A collection of simple and intermediate-level **Arduino-based IoT projects**, each demonstrating sensors, displays, and interactive hardware..
 
 ---
 
-### Table of Contents
-
-* [Overview](#overview)
-* [Features](#features)
-* [Hardware Components](#hardware-components)
-* [Circuit Connections](#circuit-connections)
-* [How It Works](#how-it-works)
-* [Simulation (Tinkercad)](#simulation-tinkercad)
+##  Project Index  
+1. [Traffic Density Controller](#1---traffic-density-controller)  
+2. [Emotion Display Mask (Robot Face Expressions)](#2---emotion-display-mask-robot-face-expressions)  
+3. [DHT11 Temperature & Humidity Monitor](#3---DHT11-temperature-and-humidity-monitor)
 
 ---
 
-### Overview
+#  1 - Traffic Density Controller
 
-This project simulates a simple smart traffic signal that updates LED indicators based on the proximity of a detected object (vehicle). The ultrasonic sensor measures distance and the Arduino switches LEDs to represent traffic density:
+ Arduino project that uses an **HC-SR04 ultrasonic sensor** to detect vehicle distance and control **Red, Yellow, and Green LEDs** like a smart traffic light.
 
-* **Green** — Road clear (object far)
-* **Yellow** — Moderate traffic (object approaching)
-* **Red** — Heavy traffic / object very close
+---
 
-### Features
+###  Overview
+Distance from the HC-SR04 sensor determines traffic density:
 
-* Distance measurement with Sensor
-* Real-time traffic status using 3 LEDs (R/Y/G)
-* Works on physical hardware and Tinkercad
-* Simple, modular wiring and code (beginner-friendly)
+| Distance | LED | Meaning |
+|---------|-----|---------|
+| > 50 cm | 🟢 Green | Road Clear |
+| 20–50 cm | 🟡 Yellow | Moderate Traffic |
+| < 20 cm | 🔴 Red | Heavy Traffic |
 
-## Hardware Components
+---
 
-* Arduino Uno (or compatible)
-* HC-SR04 ultrasonic distance sensor
-* 1 × Red LED
-* 1 × Yellow LED
-* 1 × Green LED
-* 3 × 220 Ω resistors
-* Breadboard
-* Jumper wires
+###  Features
+- Real-time traffic sensing  
+- LED-based visual output  
+- Easy to build & simulate (Tinkercad)  
+- Useful for mini-projects and demonstrations  
 
-## Circuit Connections
+---
 
-**Ultrasonic Sensor (HC-SR04)**
+###  Hardware Components
+- Arduino Uno  
+- HC-SR04 Ultrasonic Sensor  
+- LEDs (Red, Yellow, Green)  
+- Resistors (220Ω)  
+---
 
-* `TRIG` → Arduino **Pin 9**
-* `ECHO` → Arduino **Pin 10**
-* `VCC` → Arduino **5V**
-* `GND` → Arduino **GND**
+###  Circuit Connections
 
-**LED Indicators**
+```
+┌────────────────────────────────────────────┐
+│           HC-SR04 Ultrasonic Sensor        │
+├────────────────────────────────────────────┤
+│ TRIG  → Pin 9                              │
+│ ECHO → Pin 10                              │
+│ VCC   → 5V                                 │
+│ GND   → GND                                │
+└────────────────────────────────────────────┘
 
-* Red LED (long leg / anode) → Arduino **Pin 2** → 220 Ω resistor → GND rail
-* Yellow LED → Arduino **Pin 3** → 220 Ω resistor → GND rail
-* Green LED → Arduino **Pin 4** → 220 Ω resistor → GND rail
-
-**Ground**
-
-* Breadboard GND rail → Arduino **GND**
+┌────────────────────────────────────────────┐
+│                 LED Indicators              │
+├────────────────────────────────────────────┤
+│ Red LED    → Pin 2 → 220Ω → GND            │
+│ Yellow LED → Pin 3 → 220Ω → GND            │
+│ Green LED  → Pin 4 → 220Ω → GND            │
+└────────────────────────────────────────────┘
+```
 
 ![Traffic Sensor Setup](Images/Traffic.png)
-## How It Works
 
-1. The HC-SR04 sends a short ultrasonic pulse from `TRIG` and listens for the echo on `ECHO`.
-2. Arduino measures the time between sent pulse and received echo and converts it to distance (usually in centimeters).
-3. Based on pre-defined distance thresholds, the Arduino sets the LED states:
+---
 
-   * `distance > X cm` → **Green ON** (clear)
-   * `Y cm < distance <= X cm` → **Yellow ON** (moderate)
-   * `distance <= Y cm` → **Red ON** (heavy/close)
-4. These thresholds can be adjusted in the code to better match your demo setup.
+###  How It Works
+1. HC-SR04 emits an ultrasonic pulse.  
+2. Arduino calculates distance using echo time.  
+3. LEDs change according to preset traffic thresholds.  
 
-## Simulation (Tinkercad)
+---
 
-1. Create a new Arduino circuit in Tinkercad and add an HC-SR04, three LEDs, resistors, and the Arduino Uno.
-2. Wire according to the Circuit Connections section.
-3. Copy the Arduino sketch into Tinkercad’s code editor and start the simulation.
-4. Move the simulated object (or change the sensor input) to observe LED transitions.
+#  2 - Emotion Display Mask (Robot Face Expressions)
+
+A fun project that displays **robot facial expressions** on an OLED screen.  
+Expressions change using a button or touch sensor, with **RGB LED** color and **buzzer feedback**.
+
+---
+
+###  Overview
+Robot expressions included:
+- 😀 Happy  
+- 😡 Angry  
+- 😮 Surprised  
+- 😐 Neutral  
+
+Brightness can be adjusted using a potentiometer.
+
+---
+
+###  Features
+- OLED graphical emotion display  
+- Touch/button-based interaction  
+- RGB LED mood colors  
+- Buzzer sound effects  
+- Adjustable screen brightness  
+
+---
+
+###  Hardware Components
+- Arduino Uno  
+- SSD1306 OLED Display  
+- Pushbutton or TTP223 Touch Sensor  
+- RGB LED (Common Cathode)  
+- Buzzer  
+- 10kΩ Potentiometer  
+---
+
+###  Circuit Connections
+
+```
+┌────────────────────────────────────────────┐
+│               OLED Display (SSD1306)       │
+├────────────────────────────────────────────┤
+│ VCC → 5V                                   │
+│ GND → GND                                  │
+│ SDA → A4                                   │
+│ SCL → A5                                   │
+└────────────────────────────────────────────┘
+
+┌────────────────────────────────────────────┐
+│          Button / Touch Sensor (TTP223)    │
+├────────────────────────────────────────────┤
+│ OUT → Pin 2                                │
+│ GND → GND                                  │
+└────────────────────────────────────────────┘
+
+┌────────────────────────────────────────────┐
+│                RGB LED (Common Cathode)    │
+├────────────────────────────────────────────┤
+│ Red   → Pin 3                              │
+│ Green → Pin 5                              │
+│ Blue  → Pin 6                              │
+│ GND (Common) → GND                         │
+└────────────────────────────────────────────┘
+
+┌────────────────────────────────────────────┐
+│                    Buzzer                  │
+├────────────────────────────────────────────┤
+│ + → Pin 8                                  │
+│ – → GND                                    │
+└────────────────────────────────────────────┘
+
+┌────────────────────────────────────────────┐
+│                Potentiometer (10kΩ)        │
+├────────────────────────────────────────────┤
+│ Left  → 5V                                 │
+│ Right → GND                                │
+│ Middle → A0                                │
+└────────────────────────────────────────────┘
+```
+
+![Robo Face Display](Images/robo%20face.png)
+
+---
+
+###  How It Works
+1. OLED displays the current facial expression.  
+2. Button/touch sensor triggers the next expression.  
+3. RGB LED color changes to match the emotion.  
+4. Buzzer produces a short beep as feedback.  
+5. Potentiometer adjusts display brightness.  
+
+---
+
+#  3 - DHT11 Temperature & Humidity Monitor
+
+A simple project that reads **temperature and humidity** using the DHT11 digital sensor and displays it via Serial Monitor or OLED.
+
+---
+
+###  Features
+- Temperature in °C  
+- Humidity (%)  
+- Fast digital communication  
+- Beginner-friendly project  
+
+---
+
+###  Hardware Components
+- Arduino Uno  
+- DHT11 Sensor Module  
+---
+
+### Circuit Connections
+
+```
+┌────────────────────────────────────────────┐
+│               DHT11 Sensor Module          │
+├────────────────────────────────────────────┤
+│ VCC  → 5V                                  │
+│ GND  → GND                                 │
+│ DATA → Pin 7                               │
+└────────────────────────────────────────────┘
+```
+
+![DHT11 Sensor Setup](Images/DHT.png)
+
+---
+
+### ⚙️ How It Works
+1. Arduino requests data from DHT11.  
+2. Sensor returns humidity + temperature.  
+3. Values are displayed in Serial Monitor or OLED.  
+
+---
